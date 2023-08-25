@@ -1,7 +1,7 @@
 // apiを全て取得する関数を作成
-import { Todo } from "./types";
+import { Task } from "./types";
 
-export const getAllTodos = async (): Promise<Todo[]> => {
+export const getAllTodos = async (): Promise<Task[]> => {
   const res = await fetch(`http://localhost:3001/todos`, {
     cache: "no-store", //SSR
   });
