@@ -9,6 +9,7 @@ interface TodoProps {
 
 function Todo({ todo }: TodoProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editedTaskTitle, setEditedTaskTitle] = useState(todo.title);
 
   const handleEdit = async () => {
     setIsEditing(true);
@@ -26,7 +27,9 @@ function Todo({ todo }: TodoProps) {
       {isEditing ? (
         <input
           type="text"
-          className='border-gray-400 border rounded mr-2 py-1 px-2' />
+          className='border-gray-400 border rounded mr-2 py-1 px-2'
+          value={editedTaskTitle}
+        />
       ) : (
         <span>{todo.title}</span>
       )}
