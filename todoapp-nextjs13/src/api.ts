@@ -33,3 +33,14 @@ export const editTodo = async (id: string, newText: string): Promise<Task> => {
 
   return updatedTodo;
 };
+
+// 削除するための関数を作成
+export const deleteTodo = async (id: string): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/todos/${id}`, {
+    method: "DELETE",
+    headers: { "content-type": "application/json" },
+  });
+  const deleteTodo = res.json();
+
+  return deleteTodo;
+};
