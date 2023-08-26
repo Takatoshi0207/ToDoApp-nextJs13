@@ -1,9 +1,8 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "ストレッチ",
-      "completed": false
+      "title": "ストレッチマン",
+      "id": 1
     },
     {
       "id": 2,

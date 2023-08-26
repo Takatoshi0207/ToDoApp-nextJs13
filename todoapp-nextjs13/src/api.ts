@@ -23,9 +23,9 @@ export const addTodo = async (todo: Task): Promise<Task> => {
 };
 
 // 編集するための関数を作成
-export const aditTodo = async (id: string, newText: string): Promise<Task> => {
+export const editTodo = async (id: string, newText: string): Promise<Task> => {
   const res = await fetch(`http://localhost:3001/todos/${id}`, {
-    method: "POST",
+    method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ title: newText }),
   });
