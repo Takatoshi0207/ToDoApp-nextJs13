@@ -2,7 +2,7 @@
 
 import { Task } from '@/types';
 import React, { useEffect, useRef, useState } from 'react'
-import { editTodo } from '@/api';
+import { editTodo, deleteTodo } from '@/api';
 
 interface TodoProps {
   todo: Task;
@@ -28,6 +28,10 @@ function Todo({ todo }: TodoProps) {
     await editTodo(todo.id, editedTaskTitle);
     setIsEditing(false);
   };
+
+  const handleDelete = async () => {
+    await deleteTodo(todo.id);
+  }
 
   return (
     <li
@@ -57,7 +61,10 @@ function Todo({ todo }: TodoProps) {
             edit
           </button>
         )}
-        <button className='text-red-500 font-semibold'>Delete</button>
+        <button className='text-red-500 font-semibold'
+          onClick={handleDelete}
+        >Delete
+        </button>
       </div>
     </li>
   )
