@@ -9,3 +9,14 @@ export const getAllTodos = async (): Promise<Task[]> => {
 
   return todos;
 };
+
+export const addTodo = async (todo: Task): Promise<Task> => {
+  const res = await fetch(`http://localhost:3001/todos`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(todo),
+  });
+  const newTodo = res.json();
+
+  return newTodo;
+};
