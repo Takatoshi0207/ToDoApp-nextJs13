@@ -1,7 +1,7 @@
 'use client';
 
 import { Task } from '@/types';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { editTodo } from '@/api';
 
 interface TodoProps {
@@ -9,8 +9,16 @@ interface TodoProps {
 }
 
 function Todo({ todo }: TodoProps) {
+  const ref = useRef<HTMLInputElement>(null);
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedTaskTitle, setEditedTaskTitle] = useState(todo.title);
+
+  useEffect(() => {
+    if (isEditing) {
+      ref.current?.focus();
+    }
+  }, [isEditing]);
 
   const handleEdit = async () => {
     setIsEditing(true);
@@ -28,6 +36,7 @@ function Todo({ todo }: TodoProps) {
 
       {isEditing ? (
         <input
+          ref={ref}
           type="text"
           className='border-gray-400 border rounded mr-2 py-1 px-2'
           value={editedTaskTitle}
